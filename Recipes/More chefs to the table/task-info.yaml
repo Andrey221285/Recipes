@@ -21,21 +21,6 @@ files:
     server.port=8881
     management.endpoints.web.exposure.include=*
     management.endpoint.shutdown.enabled=true
-
-    #datasource settings
-    spring.datasource.driverClassName=org.h2.Driver
-    spring.datasource.url=jdbc:h2:file:../recipes_db
-    spring.datasource.username=sa
-
-    #data settings
-    spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-    spring.jpa.hibernate.ddl-auto=update
-
-    #console settings
-    spring.h2.console.path=/h2
-    spring.h2.console.enabled=true
-    spring.h2.console.settings.trace=false
-    spring.jpa.show-sql=true
   learner_created: false
 - name: build.gradle
   visible: true
@@ -44,7 +29,6 @@ files:
         id 'java'
         id 'org.springframework.boot' version '2.3.1.RELEASE'
         id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-        id "io.freefair.lombok" version "6.0.0-m2"
     }
 
     repositories {
@@ -55,123 +39,8 @@ files:
 
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter'
-        implementation 'org.springframework.boot:spring-boot-starter-actuator:2.5.6'
-        implementation 'org.springframework.boot:spring-boot-starter-web:2.5.6'
-    //    implementation 'org.projectlombok:lombok'
-    //    annotationProcessor 'org.projectlombok:lombok'
-    //    testCompileOnly 'org.projectlombok:lombok'
-    //    testAnnotationProcessor 'org.projectlombok:lombok'
-        implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-        runtimeOnly 'com.h2database:h2'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
-        implementation 'org.springframework.boot:spring-boot-starter-validation'
-    }
-  learner_created: false
-- name: src/recipes/Recipe.java
-  visible: true
-  text: |
-    package recipes;
-
-    import com.fasterxml.jackson.annotation.JsonProperty;
-    import lombok.*;
-
-    import javax.persistence.*;
-    import javax.validation.constraints.NotBlank;
-    import javax.validation.constraints.NotNull;
-    import javax.validation.constraints.Size;
-    import java.util.List;
-
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Entity(name = "recipes")
-    public class Recipe {
-
-        @Id
-        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-        @GeneratedValue(strategy = GenerationType.TABLE)
-        private Long id;
-
-        @Column
-        @NotBlank
-        private String name;
-        @Column
-        @NotBlank
-        private String description;
-
-        @ElementCollection(targetClass=String.class)
-        @Size(min = 1)
-        @NotNull
-        private List<String> ingredients;
-
-        @ElementCollection(targetClass=String.class)
-        @Size(min = 1)
-        @NotNull
-        private List<String> directions;
-    }
-  learner_created: false
-- name: src/recipes/RecipesController.java
-  visible: true
-  text: |
-    package recipes;
-
-    import org.springframework.beans.factory.annotation.Autowired;
-    import org.springframework.http.HttpStatus;
-    import org.springframework.http.ResponseEntity;
-    import org.springframework.web.bind.annotation.*;
-    import org.springframework.web.server.ResponseStatusException;
-
-    import javax.validation.Valid;
-    import java.util.HashMap;
-    import java.util.LinkedList;
-    import java.util.Map;
-    import java.util.Optional;
-
-    @RestController
-    public class RecipesController {
-        private final RecipeRepository recipeRepository;
-
-        public RecipesController(@Autowired RecipeRepository recipeRepository) {
-            this.recipeRepository = recipeRepository;
-        }
-
-        @GetMapping("/api/recipe/{id}")
-        public ResponseEntity<Recipe> getRecipe (@PathVariable long id){
-            Optional<Recipe> recipe = recipeRepository.findById(id);
-            if (recipe.isPresent()){
-                return new ResponseEntity<>(recipe.get(), HttpStatus.OK);
-            }else {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-            }
-        }
-
-        @PostMapping("/api/recipe/new")
-        public ResponseEntity<?> addRecipe(@Valid @RequestBody Recipe recipe){
-            recipeRepository.save(recipe);
-            return new ResponseEntity<>(Map.of("id", recipe.getId()), HttpStatus.OK);
-
-        }
-
-        @DeleteMapping("/api/recipe/{id}")
-        @ResponseStatus(HttpStatus.NO_CONTENT)
-        public void deleteRecipe(@PathVariable long id){
-            if (recipeRepository.existsById(id)){
-                recipeRepository.deleteById(id);
-            } else {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-            }
-        }
-    }
-  learner_created: false
-- name: src/recipes/RecipeRepository.java
-  visible: true
-  text: |
-    package recipes;
-
-    import org.springframework.data.repository.CrudRepository;
-
-    public interface RecipeRepository extends CrudRepository<Recipe, Long> {
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
     }
   learner_created: false
 - name: test/RecipesApplicationTest.java
@@ -935,18 +804,24 @@ files:
         }
     }
   learner_created: false
+- name: src/recipes/User.java
+  visible: true
+  learner_created: true
+- name: src/recipes/UserDetailsImpl.java
+  visible: true
+  learner_created: true
+- name: src/recipes/WebSecurityConfigurerImpl.java
+  visible: true
+  learner_created: true
 - name: src/recipes/RegistrationController.java
   visible: true
   learner_created: true
 - name: src/recipes/UserRepository.java
   visible: true
   learner_created: true
-- name: src/recipes/User.java
+- name: src/recipes/UserDetailsServiceImpl.java
   visible: true
   learner_created: true
-- name: src/recipes/WebSecurityConfigurerImpl.java
-  visible: true
-  learner_created: true
-feedback_link: https://hyperskill.org/learn/step/13092#comment
-status: Unchecked
-record: -1
+feedback_link: https://hyperskill.org/projects/180/stages/921/implement#comment
+status: Solved
+record: 6

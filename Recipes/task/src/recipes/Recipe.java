@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "recipes")
+@Entity(name = "recipe")
 public class Recipe {
 
     @Id
@@ -57,5 +57,6 @@ public class Recipe {
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
     private User user;
 }

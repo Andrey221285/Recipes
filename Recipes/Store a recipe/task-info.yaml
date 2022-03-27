@@ -1,27 +1,5 @@
 type: edu
 files:
-- name: src/recipes/RecipesApplication.java
-  visible: true
-  text: |
-    package recipes;
-
-    import org.springframework.boot.SpringApplication;
-    import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-    @SpringBootApplication
-    public class RecipesApplication {
-        public static void main(String[] args) {
-            SpringApplication.run(RecipesApplication.class, args);
-        }
-    }
-  learner_created: false
-- name: resources/application.properties
-  visible: true
-  text: |-
-    server.port=8881
-    management.endpoints.web.exposure.include=*
-    management.endpoint.shutdown.enabled=true
-  learner_created: false
 - name: build.gradle
   visible: true
   text: |
@@ -38,62 +16,9 @@ files:
     sourceSets.main.resources.srcDirs = ["resources"]
 
     dependencies {
-        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
-        implementation 'org.springframework.boot:spring-boot-starter:2.5.6'
-        implementation 'org.springframework.boot:spring-boot-starter-actuator:2.5.6'
-        implementation 'org.springframework.boot:spring-boot-starter-web:2.5.6'
-    }
-  learner_created: false
-- name: src/recipes/Recipe.java
-  visible: true
-  text: |
-    package recipes;
-
-    import lombok.AllArgsConstructor;
-    import lombok.Data;
-    import lombok.NoArgsConstructor;
-
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public class Recipe {
-        String name;
-        String description;
-        String[] ingredients;
-        String[] directions;
-
-    }
-  learner_created: false
-- name: src/recipes/RecipesController.java
-  visible: true
-  text: |
-    package recipes;
-
-    import org.springframework.http.HttpStatus;
-    import org.springframework.web.bind.annotation.*;
-    import org.springframework.web.server.ResponseStatusException;
-
-    import java.util.HashMap;
-    import java.util.LinkedList;
-    import java.util.Map;
-
-    @RestController
-    public class RecipesController {
-        private final LinkedList<Recipe> recipes = new LinkedList<>();
-
-        @GetMapping("/api/recipe/{id}")
-        public Recipe getRecipe (@PathVariable int id){
-            if (recipes.size()>id){
-                return recipes.get(id);
-            }
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-
-        @PostMapping("/api/recipe/new")
-        public Map<String, Integer> addRecipe(@RequestBody Recipe recipe){
-            recipes.add(recipe);
-            return Map.of("id", recipes.size()-1);
-        }
+        implementation 'org.springframework.boot:spring-boot-starter'
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
     }
   learner_created: false
 - name: test/RecipesApplicationTest.java
@@ -351,9 +276,94 @@ files:
         }
     }
   learner_created: false
+- name: resources/application.properties
+  visible: true
+  text: |-
+    server.port=8881
+    management.endpoints.web.exposure.include=*
+    management.endpoint.shutdown.enabled=true
+  learner_created: false
+- name: src/recipes/RecipesApplication.java
+  visible: true
+  text: |
+    package recipes;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+    @SpringBootApplication
+    public class RecipesApplication {
+        public static void main(String[] args) {
+            SpringApplication.run(RecipesApplication.class, args);
+        }
+    }
+  learner_created: false
+- name: src/recipes/RecipesController.java
+  visible: true
+  text: |
+    package recipes;
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.web.bind.annotation.*;
+    import org.springframework.web.server.ResponseStatusException;
+
+    import java.util.LinkedList;
+    import java.util.Map;
+
+    @RestController
+    public class RecipesController {
+        private final LinkedList<Recipe> recipes = new LinkedList<>();
+
+        @GetMapping("/api/recipe/{id}")
+        public Recipe getRecipe (@PathVariable int id){
+            if (recipes.size()>id){
+                return recipes.get(id);
+            }
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
+        @PostMapping("/api/recipe/new")
+        public Map<String, Integer> addRecipe(@RequestBody Recipe recipe){
+            recipes.add(recipe);
+            return Map.of("id", recipes.size()-1);
+        }
+    }
+  learner_created: true
+- name: src/recipes/Recipe.java
+  visible: true
+  text: |
+    package recipes;
+
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public class Recipe {
+        String name;
+        String description;
+        String[] ingredients;
+        String[] directions;
+
+    }
+  learner_created: true
 - name: src/recipes/RecipeRepository.java
   visible: true
   learner_created: true
-feedback_link: https://hyperskill.org/learn/step/13090#comment
+- name: src/recipes/WebSecurityConfigurerImpl.java
+  visible: true
+  learner_created: true
+- name: src/recipes/User.java
+  visible: true
+  learner_created: true
+- name: src/recipes/UserRepository.java
+  visible: true
+  learner_created: true
+- name: src/recipes/RegistrationController.java
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/projects/180/stages/919/implement#comment
 status: Solved
-record: 2
+record: 7

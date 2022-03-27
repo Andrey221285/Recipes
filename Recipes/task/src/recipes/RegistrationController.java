@@ -18,7 +18,7 @@ public class RegistrationController {
     PasswordEncoder encoder;
 
 
-    @PostMapping("/register")
+    @PostMapping("/api/register")
     public void register(@Valid @RequestBody User user) {
         // input validation omitted for brevity
         User userOld = userRepo.findByEmailIgnoreCase(user.getEmail());
