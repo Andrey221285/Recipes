@@ -34,12 +34,12 @@ topics:
     theory_id: 6633
   - title: HyperText Transfer Protocol
     theory_id: 6569
-  - title: Immutability
-    theory_id: 7929
-  - title: Introduction to operating systems
-    theory_id: 9704
   - title: Computer algorithms
     theory_id: 16547
+  - title: Immutability
+    theory_id: 7929
+  - title: Introduction to Operating systems
+    theory_id: 9704
   - title: The big O notation
     theory_id: 16699
   - title: Data structures
@@ -48,7 +48,7 @@ topics:
     theory_id: 6434
   - title: HTTP URL
     theory_id: 6740
-  - title: Tags and attributes
+  - title: Tags and Attributes
     theory_id: 7536
   - title: HTML page structure
     theory_id: 6491
@@ -74,6 +74,8 @@ topics:
     theory_id: 13334
   - title: Computer programming
     theory_id: 8739
+  - title: Paradigms
+    theory_id: 15860
   - title: Introduction to Java
     theory_id: 3500
   - title: Basic literals
@@ -114,8 +116,6 @@ topics:
     theory_id: 3507
   - title: Switch statement
     theory_id: 3504
-  - title: Characters
-    theory_id: 3514
   - title: Sizes and ranges
     theory_id: 3532
   - title: Type casting
@@ -128,8 +128,6 @@ topics:
     theory_id: 3489
   - title: Functional decomposition
     theory_id: 10570
-  - title: String
-    theory_id: 3523
   - title: Primitive and reference types
     theory_id: 5035
   - title: Array
@@ -140,6 +138,10 @@ topics:
     theory_id: 3525
   - title: Iterating over arrays
     theory_id: 3602
+  - title: Characters
+    theory_id: 3514
+  - title: String
+    theory_id: 3523
   - title: Final variables
     theory_id: 7427
   - title: Errors in programs
@@ -158,14 +160,20 @@ topics:
     theory_id: 3552
   - title: Web development
     theory_id: 13931
+  - title: Pseudocode
+    theory_id: 15090
+  - title: Pseudocode basics
+    theory_id: 19510
+  - title: Build tools
+    theory_id: 4284
+  - title: External resources
+    theory_id: 6216
   - title: Command line overview
     theory_id: 8977
-  - title: Parameters and options
+  - title: Parameters and Options
     theory_id: 9746
   - title: Java Archive
     theory_id: 4311
-  - title: Build tools
-    theory_id: 4284
   - title: Gradle basics
     theory_id: 5075
   - title: Basic project with Gradle
@@ -174,10 +182,6 @@ topics:
     theory_id: 7917
   - title: Dependency management
     theory_id: 5076
-  - title: External resources
-    theory_id: 6216
-  - title: Pseudocode
-    theory_id: 15090
   - title: Fixed-size array
     theory_id: 7255
   - title: Dynamic array
@@ -308,6 +312,8 @@ topics:
     theory_id: 14771
   - title: CRUD repositories
     theory_id: 18031
+  - title: Scopes of beans
+    theory_id: 19487
   - title: Application layers
     theory_id: 13971
   - title: Introduction to databases
@@ -318,6 +324,10 @@ topics:
     theory_id: 6901
   - title: Relational Data Model
     theory_id: 13785
+  - title: Data and object mapping
+    theory_id: 8262
+  - title: Object-Relational Mapping (ORM)
+    theory_id: 8312
   - title: Regexps basics
     theory_id: 7580
   - title: Regexps in Java
@@ -330,10 +340,6 @@ topics:
     theory_id: 3680
   - title: Regexes in programs
     theory_id: 3696
-  - title: Data and object mapping
-    theory_id: 8262
-  - title: Object-Relational Mapping (ORM)
-    theory_id: 8312
   - title: Method references
     theory_id: 3620
   - title: Functional interfaces

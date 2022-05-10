@@ -5,6 +5,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../../../Topics/Builder/Robot Builder/src">
       <sourceFolder url="file://$MODULE_DIR$/../../../../../Topics/Builder/Robot Builder/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../Topics/Builder/Robot Builder/src/generated" isTestSource="false" generated="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
