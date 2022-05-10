@@ -12,6 +12,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
+          <factory-entry name="Recipes.Recipes-task.main" />
           <factory-entry name="entityManagerFactory" />
         </datasource-mapping>
         <naming-strategy-map />
@@ -21,15 +22,12 @@
       <configuration />
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_15">
     <output url="file://$MODULE_DIR$/../../../../Recipes/task/out/production/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../../Recipes/task/resources">
       <sourceFolder url="file://$MODULE_DIR$/../../../../Recipes/task/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../../../Recipes/task/resources/generated" isTestSource="false" generated="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../Recipes/task/src">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../Recipes/task/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -1,5 +1,26 @@
 type: edu
 files:
+- name: build.gradle
+  visible: true
+  text: |
+    plugins {
+        id 'java'
+        id 'org.springframework.boot' version '2.3.1.RELEASE'
+        id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    sourceSets.main.resources.srcDirs = ["resources"]
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter'
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+    }
+  learner_created: false
 - name: src/recipes/RecipesApplication.java
   visible: true
   text: |
@@ -21,27 +42,6 @@ files:
     server.port=8881
     management.endpoints.web.exposure.include=*
     management.endpoint.shutdown.enabled=true
-  learner_created: false
-- name: build.gradle
-  visible: true
-  text: |
-    plugins {
-        id 'java'
-        id 'org.springframework.boot' version '2.3.1.RELEASE'
-        id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    }
-
-    repositories {
-        mavenCentral()
-    }
-
-    sourceSets.main.resources.srcDirs = ["resources"]
-
-    dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter'
-        implementation 'org.springframework.boot:spring-boot-starter-actuator'
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-    }
   learner_created: false
 - name: test/RecipesApplicationTest.java
   visible: false
@@ -804,22 +804,22 @@ files:
         }
     }
   learner_created: false
-- name: src/recipes/User.java
+- name: src/recipes/security/UserDetailsImpl.java
   visible: true
   learner_created: true
-- name: src/recipes/UserDetailsImpl.java
+- name: src/recipes/security/UserDetailsServiceImpl.java
   visible: true
   learner_created: true
-- name: src/recipes/WebSecurityConfigurerImpl.java
+- name: src/recipes/security/WebSecurityConfigurerImpl.java
   visible: true
   learner_created: true
-- name: src/recipes/RegistrationController.java
+- name: src/recipes/web/controller/RegistrationController.java
   visible: true
   learner_created: true
-- name: src/recipes/UserRepository.java
+- name: src/recipes/persistence/model/User.java
   visible: true
   learner_created: true
-- name: src/recipes/UserDetailsServiceImpl.java
+- name: src/recipes/persistence/dao/UserRepository.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/180/stages/921/implement#comment
